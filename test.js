@@ -6,7 +6,7 @@ var masterData = require(__dirname + '/data/masterData.json')
 
 const fileName = __dirname + '/data/Pivot.csv'
 const resultFileName = __dirname + '/data/result.json'
-const debugFileName = __dirname + '/data/debug.json'
+const missingFileName = __dirname + '/data/missing.json'
 
 fs.readFile(fileName, function(err, data) {
   csv(data, {
@@ -90,7 +90,7 @@ fs.readFile(fileName, function(err, data) {
       })
       .uniqWith(_.isEqual)
       .value()
-    fs.writeFile(debugFileName, JSON.stringify(missingStammdaten), function(err) {
+    fs.writeFile(missingFileName, JSON.stringify(missingStammdaten), function(err) {
       if (err) {
         console.error(err)
         throw err
