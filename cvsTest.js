@@ -34,7 +34,7 @@ fs.readFile(fileName, function(err, data) {
         }
 
       dataset = _.find(stammdaten, {
-        'Programm': value.Programm,
+        'Programm': value.Typcode,
         'Farbcode': _.toString(value.Farbcode)
       })
       _.assign(value, {
