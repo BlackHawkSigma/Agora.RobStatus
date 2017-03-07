@@ -2,7 +2,7 @@ const csv = require('csv-parse')
 const fs = require('fs')
 const _ = require('lodash')
 const debug = require('debug')('csv')
-var stammdaten = require(__dirname + '/data/stammdaten.json')
+var masterData = require(__dirname + '/data/masterData.json')
 
 const fileName = __dirname + '/data/Pivot.csv'
 const resultFileName = __dirname + '/data/result.json'
@@ -33,10 +33,8 @@ fs.readFile(fileName, function(err, data) {
             Kabine = "n/a"
         }
 
-      dataset = _.find(stammdaten, {
-        'Programm': value.Typcode,
-        'Farbcode': _.toString(value.Farbcode)
-      })
+      dataset = _.get(masterData, [_.toString(value.Typcode), _.toString(value.Farbcode)])
+
       _.assign(value, {
         'Kabine': Kabine,
         'Roboter': _.toNumber(value.Bereich.slice(4, -1)),
