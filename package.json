@@ -1,6 +1,6 @@
 {
   "name": "rob-status",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,12 +9,8 @@
   "author": "Tobias Beese",
   "license": "ISC",
   "dependencies": {
-    "csv-parse": "^1.2.0",
     "debug": "^2.6.1",
-    "express": "^4.15.0",
     "lodash": "^4.17.4",
-    "morgan": "^1.8.1",
-    "pug": "^2.0.0-beta11",
     "seneca": "^3.3.0"
   }
 }
