@@ -128,5 +128,5 @@ var seneca = require('seneca')()
   .listen({
     type: 'tcp',
     port: 10101,
-    host: '10.30.174.185'
+    host:  process.env.HOST_IP
   })
