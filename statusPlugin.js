@@ -22,7 +22,8 @@ function robStatus(optins) {
   function findMissing(msg, respond) {
     // Find all NOK skids
     // Treat every row
-    _.each(msg.csv, function(value, index) {
+    data = msg.csv
+    _.each(data, function(value, index) {
       var Kabine = ""
       switch (_.toNumber(value.Bereich.slice(2, -3))) {
         case 1:
