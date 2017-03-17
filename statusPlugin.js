@@ -127,7 +127,5 @@ var seneca = require('seneca')()
     fileName : masterDataFileName
   })
   .listen({
-    type: 'tcp',
-    port: 10101,
-    host:  process.env.HOST_IP
+    host:'localhost'
   })
