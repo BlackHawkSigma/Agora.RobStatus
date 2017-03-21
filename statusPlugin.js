@@ -1,9 +1,7 @@
 const fs = require('fs')
 const _ = require('lodash')
 
-const masterDataFileName = __dirname + '/data/masterData.json'
-
-function robStatus(optins) {
+module.exports = function robStatus(optins) {
 
   var masterData = {}
 
@@ -121,11 +119,3 @@ function robStatus(optins) {
     respond(null, out)
   }
 }
-
-var seneca = require('seneca')()
-  .use(robStatus, {
-    fileName : masterDataFileName
-  })
-  .listen({
-    host:'localhost'
-  })
