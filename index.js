@@ -5,5 +5,6 @@ const seneca = require('seneca')()
     fileName : masterDataFileName
   })
   .listen({
-    host:'localhost'
+    host: process.env.HOST_IP,
+    port: 10102
   })
