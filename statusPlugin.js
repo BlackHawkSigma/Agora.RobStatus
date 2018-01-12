@@ -61,6 +61,9 @@ module.exports = function robStatus(optins) {
       data[index] = _.pick(data[index], ['Kabine', 'Roboter', 'Skid', 'Zeitpunkt', 'Stammdaten', 'Programm', 'Farbcode', 'Vorgabe', 'OK', 'aktiv'])
     })
 
+    let minTime = _.minBy(data, 'Zeitpunkt')
+    let maxTime = _.maxBy(data, 'Zeitpunkt')
+
     // Remove "leerprogramm"
     _.remove(data, {'Programm': 9990})
 
@@ -114,7 +117,11 @@ module.exports = function robStatus(optins) {
     var out = {
       'summary': summary,
       'nok': list,
-      'missing': missingStammdaten
+      'missing': missingStammdaten,
+      'time': {
+        min: minTime,
+        max: maxTime
+      }
     }
     respond(null, out)
   }
