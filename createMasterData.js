@@ -36,7 +36,7 @@ _.forEach(data, function(value, typcode) {
   })
 })
 
-fs.writeFile(masterDataFileName, JSON.stringify(data), function(err) {
+fs.writeFile(masterDataFileName, JSON.stringify(data, undefined, 2), function(err) {
   if (err) {
     console.error(err)
     throw err
