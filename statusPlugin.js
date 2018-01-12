@@ -70,7 +70,7 @@ module.exports = function robStatus(optins) {
 
     // Remove PLA, PDC etc.
     _.remove(data, function(value, index) {
-      return _.includes([1221, 1231, 1321, 1331, 1341, 3081, 3334], value.Programm)
+      return _.includes([1221, 1231, 1321, 1331, 1341, 3081, 3334, 9591, 9099, 9243], value.Programm)
     })
 
     nokData = _.filter(data, {
