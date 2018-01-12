@@ -21,6 +21,7 @@ module.exports = function robStatus(optins) {
     // Find all NOK skids
     // Treat every row
     data = msg.csv
+    data.pop()
     _.each(data, function(value, index) {
       var Kabine = ""
       switch (_.toNumber(value.Bereich.slice(2, -3))) {
@@ -61,8 +62,8 @@ module.exports = function robStatus(optins) {
       data[index] = _.pick(data[index], ['Kabine', 'Roboter', 'Skid', 'Zeitpunkt', 'Stammdaten', 'Programm', 'Farbcode', 'Vorgabe', 'OK', 'aktiv'])
     })
 
-    let minTime = _.minBy(data, 'Zeitpunkt')
-    let maxTime = _.maxBy(data, 'Zeitpunkt')
+    let minTime = _.minBy(data, (o) => o.Zeitpunkt )
+    let maxTime = _.maxBy(data, (o) => o.Zeitpunkt )
 
     // Remove "leerprogramm"
     _.remove(data, {'Programm': 9990})
@@ -119,8 +120,8 @@ module.exports = function robStatus(optins) {
       'nok': list,
       'missing': missingStammdaten,
       'time': {
-        min: minTime,
-        max: maxTime
+        min: minTime.Zeitpunkt,
+        max: maxTime.Zeitpunkt
       }
     }
     respond(null, out)
