@@ -1,6 +1,8 @@
 const fs = require('fs')
 const _ = require('lodash')
 
+const parser = require('./parseMasterData')
+
 module.exports = function robStatus(optins) {
 
   var masterData = {}
@@ -9,11 +11,13 @@ module.exports = function robStatus(optins) {
   this.add('init:robStatus', init)
 
   function init(msg, respond) {
-    // Read latest masterData file
-    fs.readFile(optins.fileName, function(err, data) {
-      if (err) return respond(err)
-      masterData = JSON.parse(data)
-      respond()
+    parser().then(() => {
+      // Read latest masterData file
+      fs.readFile(optins.fileName, function(err, data) {
+        if (err) return respond(err)
+        masterData = JSON.parse(data)
+        respond()
+      })
     })
   }
 
