@@ -5,7 +5,7 @@ const masterDataFileName = __dirname + '/data/masterData.json'
 
 module.exports = () => {
   return new Promise((resole, reject) => {
-    fs.readFile(`${__dirname}/data/rawMasterdata.csv`, 'utf-8', (err, data) => {
+    fs.readFile(`${__dirname}/data/rawMasterdata.tsv`, 'utf-8', (err, data) => {
       if (err) reject(err)
 
       const rawData = d3.tsvParseRows(data)
